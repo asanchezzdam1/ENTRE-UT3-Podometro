@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * 
+ * AimarSanchez
  *  Clase para testear la clase Podometro
  *  
  */
