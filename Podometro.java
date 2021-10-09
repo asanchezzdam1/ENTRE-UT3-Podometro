@@ -6,24 +6,49 @@
  * @author    - pon aquí tu nombre - 
  */
 public class Podometro {
-    
+    private final  char HOMBRE = 'H';
+    private final  char MUJER = 'M';
+    private final  int SABADO = '6';
+    private final  int DOMINGO = '7';
+    private final  double ZANCADA_HOMBRE = 0.45;
+    private final  double ZANCADA_MUJER = 0.41;
+    private String marca;
+    private int altura;
+    private char sexo;
+    private int longitudZancada;
+    private int totalPasosLaborables;
+    private int totalPasosSabado;
+    private int totalPasosDomingo;
+    private double totalDistanciaSemana;
+    private double totalDistanciaFinSemana;
+    private int tiempo;
+    private int caminatasNoche;
 
     /**
      * Inicializa el podómetro con la marca indicada por el parámetro.
      * El resto de atributos se ponen a 0 y el sexo, por defecto, es mujer
      */
-    public Podometro() {
-
-        
+    public Podometro(String queMarca) {
+        marca = queMarca;
+        altura = 0;
+        sexo = 'M';
+        longitudZancada = 0;
+        totalPasosLaborables = 0;
+        totalPasosSabado = 0;
+        totalPasosDomingo = 0;
+        totalDistanciaSemana = 0;
+        totalDistanciaFinSemana = 0;
+        tiempo = 0;
+        caminatasNoche = 0;
     }
 
     /**
      * accesor para la marca
      *  
      */
-    public      getMarca() {
+    public String getMarca() {
 
-         
+         return marca;
 
     }
 
@@ -83,7 +108,11 @@ public class Podometro {
      */
     public void printEstadísticas() {
 
-        
+        System.out.println("Configuracion del Podómetro");
+        System.out.println("***************************");
+        System.out.println("Altura: " + altura + "metros");
+        System.out.println("Sexo: " + sexo);
+        System.out.println("Longitud Zancada: " + longitudZancada + "metros" );
 
     }
 
@@ -93,12 +122,14 @@ public class Podometro {
      *  Calcula y devuelve un String que representa el nombre del día
      *  en el que se ha caminado más pasos - "SÁBADO"   "DOMINGO" o  "LABORABLES"
      */
+    //comentado para evitar error de compilacion
+    /**
     public String diaMayorNumeroPasos() {
 
          
 
     }
-    
+    */
     
     /**
      * Restablecer los valores iniciales del podómetro

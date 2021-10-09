@@ -6,26 +6,10 @@ import java.util.Scanner;
  *  
  */
 public class DemoPodometro {
-    // atributos
+
     private Podometro podometro;
     private Scanner teclado;
-    private final  char HOMBRE = 'H';
-    private final  char MUJER = 'M';
-    private final  int SABADO = '6';
-    private final  int DOMINGO = '7';
-    private final  double ZANCADA_HOMBRE = 0.45;
-    private final  double ZANCADA_MUJER = 0.41;
-    private String marca;
-    private int altura;
-    private char sexo;
-    private int longitudZancada;
-    private int totalPasosLaborables;
-    private int totalPasosSabado;
-    private int totalPasosDomingo;
-    private double totalDistanciaSemana;
-    private double totalDistanciaFinSemana;
-    private int tiempo;
-    private int caminatasNoche;
+
     /**
      * Constructor de la clase DemoPodometro
      */
@@ -76,7 +60,7 @@ public class DemoPodometro {
         horasFin = new int[] {800, 1000, 2300, 1100, 2230};
         registrarCaminatas(pasos, dias, horasInicio, horasFin);
         mostrarEstadisticas();
-
+        
         pausa();
 
         podometro.reset();
