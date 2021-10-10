@@ -109,30 +109,60 @@ public class Podometro {
     public void printEstadísticas() {
         System.out.println("Estadisticas");
         System.out.println("***************************");
-        
+
         System.out.println("Distancia recorrida toda la semana: " + totalDistanciaSemana + " Km");
         System.out.println("Distancia recorrida fin de semana: " + totalDistanciaFinSemana + " Km");
-        
+
         System.out.println("Numero pasos dias laborables: " + totalPasosLaborables);
         System.out.println("Numero pasos SÁBADO: " + totalPasosSabado);
         System.out.println("Numero pasos DOMINGO: " + totalPasosDomingo);
-        
+
         System.out.println("Numero caminatas realizadas a partir de las 21h" + caminatasNoche);
-        
+
         System.out.println("Tiempo total caminado en la semana" + tiempo);
-        System.out.println("Día/s con más pasos caminados");
+        if(totalPasosLaborables > totalPasosSabado || totalPasosLaborables > totalPasosDomingo){
+            System.out.println("Día/s con más pasos caminados: LABORABLES" );
+        }
+        else if(totalPasosSabado > totalPasosLaborables || totalPasosSabado > totalPasosDomingo){
+            System.out.println("Día/s con más pasos caminados: SABADO" );
+        }
+        else if(totalPasosDomingo > totalPasosLaborables || totalPasosDomingo > totalPasosSabado){
+            System.out.println("Día/s con más pasos caminados: DOMINGO" );
+        }
     }
 
     /**
      *  Calcula y devuelve un String que representa el nombre del día
      *  en el que se ha caminado más pasos - "SÁBADO"   "DOMINGO" o  "LABORABLES"
      */
-    //comentado para evitar error de compilacion
-    /**
+    
     public String diaMayorNumeroPasos() {
-
+        String strDia = "";
+        if(totalPasosLaborables > totalPasosSabado || totalPasosLaborables > totalPasosDomingo){
+            strDia = "LABORABLES";
+        }
+        else if(totalPasosSabado > totalPasosLaborables || totalPasosSabado > totalPasosDomingo){
+            strDia = "SABADO";
+        }
+        else if(totalPasosDomingo > totalPasosLaborables || totalPasosDomingo > totalPasosSabado){
+            strDia = "DOMINGO";
+        }
+        else if(totalPasosLaborables >= totalPasosSabado || totalPasosSabado >= totalPasosLaborables){
+            strDia = "LABORABLES Y SABADO";
+        }
+        else if(totalPasosLaborables >= totalPasosDomingo || totalPasosDomingo >= totalPasosLaborables){
+            strDia = "LABORABLES Y DOMINGO";
+        }
+        else if(totalPasosSabado >= totalPasosDomingo || totalPasosDomingo >= totalPasosSabado){
+            strDia = "SABADO Y DOMINGO";
+        }
+        // falta por acabar
+        else if(totalPasosLaborables >= totalPasosSabado || totalPasosSabado >= totalPasosLaborables){
+            strDia = "LABORABLES, SABADO Y DOMINGO";
+        }
+        
+        return strDia;
     }
-     */
 
     /**
      * Restablecer los valores iniciales del podómetro
@@ -141,6 +171,15 @@ public class Podometro {
      *  
      */    
     public void reset() {
-
+        altura = 0;
+        sexo = 'M';
+        longitudZancada = 0;
+        totalPasosLaborables = 0;
+        totalPasosSabado = 0;
+        totalPasosDomingo = 0;
+        totalDistanciaSemana = 0;
+        totalDistanciaFinSemana = 0;
+        tiempo = 0;
+        caminatasNoche = 0;
     }
 }
