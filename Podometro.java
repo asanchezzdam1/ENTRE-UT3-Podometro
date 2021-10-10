@@ -13,9 +13,9 @@ public class Podometro {
     private final  double ZANCADA_HOMBRE = 0.45;
     private final  double ZANCADA_MUJER = 0.41;
     private String marca;
-    private int altura;
+    private double altura;
     private char sexo;
-    private int longitudZancada;
+    private double longitudZancada;
     private int totalPasosLaborables;
     private int totalPasosSabado;
     private int totalPasosDomingo;
@@ -62,7 +62,14 @@ public class Podometro {
      *  
      */
     public void configurar(double queAltura, char queSexo) {
-
+        altura = queAltura;
+        sexo = queSexo;
+        if(sexo == 'M'){
+            longitudZancada = 0.41;
+        }
+        else{
+            longitudZancada = 0.45;
+        }
     }
 
     /**
@@ -93,9 +100,9 @@ public class Podometro {
     public void printConfiguracion() {
         System.out.println("Configuracion del Podómetro");
         System.out.println("***************************");
-        System.out.println("Altura: " + altura + "metros");
+        System.out.println("Altura: " + altura + " metros");
         System.out.println("Sexo: " + sexo);
-        System.out.println("Longitud Zancada: " + longitudZancada + "metros" );
+        System.out.println("Longitud Zancada: " + longitudZancada + " metros" );
 
     }
 
@@ -147,17 +154,17 @@ public class Podometro {
         else if(totalPasosDomingo > totalPasosLaborables || totalPasosDomingo > totalPasosSabado){
             strDia = "DOMINGO";
         }
-        else if(totalPasosLaborables >= totalPasosSabado || totalPasosSabado >= totalPasosLaborables){
+        else if(totalPasosLaborables >= totalPasosSabado && totalPasosSabado >= totalPasosLaborables){
             strDia = "LABORABLES Y SABADO";
         }
-        else if(totalPasosLaborables >= totalPasosDomingo || totalPasosDomingo >= totalPasosLaborables){
+        else if(totalPasosLaborables >= totalPasosDomingo && totalPasosDomingo >= totalPasosLaborables){
             strDia = "LABORABLES Y DOMINGO";
         }
-        else if(totalPasosSabado >= totalPasosDomingo || totalPasosDomingo >= totalPasosSabado){
+        else if(totalPasosSabado >= totalPasosDomingo && totalPasosDomingo >= totalPasosSabado){
             strDia = "SABADO Y DOMINGO";
         }
         // falta por acabar
-        else if(totalPasosLaborables >= totalPasosSabado || totalPasosSabado >= totalPasosLaborables){
+        else if(totalPasosLaborables >= totalPasosSabado && totalPasosSabado >= totalPasosLaborables && totalPasosLaborables >= totalPasosDomingo && totalPasosDomingo >= totalPasosLaborables && totalPasosSabado >= totalPasosDomingo && totalPasosDomingo >= totalPasosSabado){
             strDia = "LABORABLES, SABADO Y DOMINGO";
         }
         
