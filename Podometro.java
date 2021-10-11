@@ -99,7 +99,7 @@ public class Podometro {
         else if (horaFin <= 0000 || horaFin >= 2359){
             System.out.println("Hora de Fin Incorrecta");
         }
-        // acaba a la 6 las caminatas de la noche
+        // Teniendo en cuenta que la noche acaba sobre las 6 de la madrugada
         if (horaInicio >= 2100 || horaInicio <= 0600 ){
             caminatasNoche ++;
         }
@@ -163,9 +163,9 @@ public class Podometro {
         System.out.println("Numero pasos SÁBADO: " + totalPasosSabado);
         System.out.println("Numero pasos DOMINGO: " + totalPasosDomingo);
 
-        System.out.println("Numero caminatas realizadas a partir de las 21h " + caminatasNoche);
+        System.out.println("Numero caminatas realizadas a partir de las 21h: " + caminatasNoche);
 
-        System.out.println("Tiempo total caminado en la semana " + tiempo / 60 + "horas y " + (tiempo % 60 ) + "minutos.");
+        System.out.println("Tiempo total caminado en la semana: " + tiempo / 60 + " horas y " + (tiempo % 60 ) + " minutos.");
         if(totalPasosLaborables > totalPasosSabado || totalPasosLaborables > totalPasosDomingo){
             System.out.println("Día/s con más pasos caminados: LABORABLES" );
         }
@@ -174,6 +174,9 @@ public class Podometro {
         }
         else if(totalPasosDomingo > totalPasosLaborables || totalPasosDomingo > totalPasosSabado){
             System.out.println("Día/s con más pasos caminados: DOMINGO" );
+        }
+        else{
+            System.out.println("Ningun dia");
         }
     }
 
@@ -184,13 +187,13 @@ public class Podometro {
 
     public String diaMayorNumeroPasos() {
         String strDia = "";
-        if(totalPasosLaborables > totalPasosSabado || totalPasosLaborables > totalPasosDomingo){
+        if(totalPasosLaborables > totalPasosSabado && totalPasosLaborables > totalPasosDomingo){
             strDia = "LABORABLES";
         }
-        else if(totalPasosSabado > totalPasosLaborables || totalPasosSabado > totalPasosDomingo){
+        else if(totalPasosSabado > totalPasosLaborables && totalPasosSabado > totalPasosDomingo){
             strDia = "SABADO";
         }
-        else if(totalPasosDomingo > totalPasosLaborables || totalPasosDomingo > totalPasosSabado){
+        else if(totalPasosDomingo > totalPasosLaborables && totalPasosDomingo > totalPasosSabado){
             strDia = "DOMINGO";
         }
         else if(totalPasosLaborables >= totalPasosSabado && totalPasosSabado >= totalPasosLaborables){
