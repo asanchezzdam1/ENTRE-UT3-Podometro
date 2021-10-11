@@ -64,11 +64,11 @@ public class Podometro {
     public void configurar(double queAltura, char queSexo) {
         altura = queAltura;
         sexo = queSexo;
-        if(sexo == 'M'){
-            longitudZancada = 0.41;
+        if(sexo == 'M' || sexo == MUJER){
+            longitudZancada = Math.floor(altura * 0.41);
         }
-        else{
-            longitudZancada = 0.45;
+        else if (sexo == 'H' || sexo == HOMBRE){
+            longitudZancada = Math.ceil(altura * 0.45);
         }
     }
 
@@ -85,9 +85,16 @@ public class Podometro {
      *   
      *   (leer enunciado del ejercicio)
      */
-    public void registrarCaminata(int pasos, int dia, int horaInicio,
-    int horaFin) {
-
+    public void registrarCaminata(int pasos, int dia, int horaInicio,int horaFin) {
+        if (dia <= 0 || dia >= 8){
+            System.out.println("Dia incorrecto ponga un numero de 1 al 7");
+        }
+        else if(horaInicio <= 0000 || horaInicio >= 2359){
+            System.out.println("Hora de incio incorrecta");
+        }
+        else if (horaFin <= 0000 || horaFin >= 2359){
+            System.out.println("Hora de Fin Incorrecta");
+        }
     }
 
     /**
@@ -100,9 +107,9 @@ public class Podometro {
     public void printConfiguracion() {
         System.out.println("Configuracion del Podómetro");
         System.out.println("***************************");
-        System.out.println("Altura: " + altura + " metros");
+        System.out.println("Altura: " + altura / 100 + " metros");
         System.out.println("Sexo: " + sexo);
-        System.out.println("Longitud Zancada: " + longitudZancada + " metros" );
+        System.out.println("Longitud Zancada: " + longitudZancada / 100 + " metros" );
 
     }
 
@@ -124,9 +131,9 @@ public class Podometro {
         System.out.println("Numero pasos SÁBADO: " + totalPasosSabado);
         System.out.println("Numero pasos DOMINGO: " + totalPasosDomingo);
 
-        System.out.println("Numero caminatas realizadas a partir de las 21h" + caminatasNoche);
+        System.out.println("Numero caminatas realizadas a partir de las 21h " + caminatasNoche);
 
-        System.out.println("Tiempo total caminado en la semana" + tiempo);
+        System.out.println("Tiempo total caminado en la semana " + tiempo);
         if(totalPasosLaborables > totalPasosSabado || totalPasosLaborables > totalPasosDomingo){
             System.out.println("Día/s con más pasos caminados: LABORABLES" );
         }
@@ -164,7 +171,7 @@ public class Podometro {
             strDia = "SABADO Y DOMINGO";
         }
         // falta por acabar
-        else if(totalPasosLaborables >= totalPasosSabado && totalPasosSabado >= totalPasosLaborables && totalPasosLaborables >= totalPasosDomingo && totalPasosDomingo >= totalPasosLaborables && totalPasosSabado >= totalPasosDomingo && totalPasosDomingo >= totalPasosSabado){
+        else {
             strDia = "LABORABLES, SABADO Y DOMINGO";
         }
         
