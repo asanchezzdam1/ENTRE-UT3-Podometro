@@ -105,27 +105,25 @@ public class Podometro {
         }
         // Para saber que dia estamos
         switch (dia) {
+            // Caso Sabado
             case 6:{
                     totalDistanciaFinSemana += (pasos * longitudZancada);
                     totalPasosSabado += pasos;
                     break;
                 } 
+            // Caso Domingo
             case 7:{
                     totalDistanciaFinSemana += (pasos * longitudZancada);
                     totalPasosDomingo += pasos;
                     break;
                 } 
-
+            // Caso Entre Semana
             default : {
                     totalDistanciaSemana += (pasos * longitudZancada);
                     totalPasosLaborables += pasos;
                     break;
                 }
         }
-        // calculamos la hora de fin en formato hora
-        horaFin = (horaFin / 100) * 60 + horaFin % 100;
-        // calculamos la hora de inicio en formato hora
-        horaInicio = (horaInicio / 100) * 60 + horaInicio % 100;
         // Se calcula el tiempo de la caminata
         tiempo += horaFin - horaInicio;
     }
