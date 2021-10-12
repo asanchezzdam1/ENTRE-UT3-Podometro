@@ -105,16 +105,17 @@ public class Podometro {
         }
         // Para saber que dia estamos
         switch (dia) {
-            case 7:{
-                    totalDistanciaFinSemana += (pasos * longitudZancada);
-                    totalPasosDomingo += pasos;
-                    break;
-                } 
             case 6:{
                     totalDistanciaFinSemana += (pasos * longitudZancada);
                     totalPasosSabado += pasos;
                     break;
                 } 
+            case 7:{
+                    totalDistanciaFinSemana += (pasos * longitudZancada);
+                    totalPasosDomingo += pasos;
+                    break;
+                } 
+
             default : {
                     totalDistanciaSemana += (pasos * longitudZancada);
                     totalPasosLaborables += pasos;
@@ -156,8 +157,8 @@ public class Podometro {
         System.out.println("Estadisticas");
         System.out.println("***************************");
 
-        System.out.println("Distancia recorrida toda la semana: " + totalDistanciaSemana + " Km");
-        System.out.println("Distancia recorrida fin de semana: " + totalDistanciaFinSemana + " Km");
+        System.out.println("Distancia recorrida toda la semana: " + totalDistanciaSemana / 1000 + " Km");
+        System.out.println("Distancia recorrida fin de semana: " + totalDistanciaFinSemana / 1000 + " Km");
 
         System.out.println("Numero pasos dias laborables: " + totalPasosLaborables);
         System.out.println("Numero pasos SÁBADO: " + totalPasosSabado);
@@ -205,7 +206,6 @@ public class Podometro {
         else if(totalPasosSabado >= totalPasosDomingo && totalPasosDomingo >= totalPasosSabado){
             strDia = "SABADO Y DOMINGO";
         }
-        // falta por acabar
         else {
             strDia = "LABORABLES, SABADO Y DOMINGO";
         }
